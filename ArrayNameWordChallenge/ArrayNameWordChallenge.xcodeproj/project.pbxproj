@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8F6D98916A1C080006187EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F6D98816A1C080006187EC /* Foundation.framework */; };
-		A8F6D98C16A1C080006187EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F6D98B16A1C080006187EC /* main.m */; };
+		A8F6DA0116A1E908006187EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F6DA0016A1E908006187EC /* Foundation.framework */; };
+		A8F6DA0416A1E908006187EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F6DA0316A1E908006187EC /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A8F6D98216A1C080006187EC /* CopyFiles */ = {
+		A8F6D9FA16A1E908006187EC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -24,62 +24,62 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A8F6D98416A1C080006187EC /* DaylightSavingsTester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DaylightSavingsTester; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8F6D98816A1C080006187EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A8F6D98B16A1C080006187EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A8F6D98E16A1C080006187EC /* DaylightSavingsTester-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DaylightSavingsTester-Prefix.pch"; sourceTree = "<group>"; };
+		A8F6D9FC16A1E908006187EC /* ArrayNameWordChallenge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ArrayNameWordChallenge; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8F6DA0016A1E908006187EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A8F6DA0316A1E908006187EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A8F6DA0616A1E909006187EC /* ArrayNameWordChallenge-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArrayNameWordChallenge-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A8F6D98116A1C080006187EC /* Frameworks */ = {
+		A8F6D9F916A1E908006187EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8F6D98916A1C080006187EC /* Foundation.framework in Frameworks */,
+				A8F6DA0116A1E908006187EC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A8F6D97916A1C080006187EC = {
+		A8F6D9F116A1E908006187EC = {
 			isa = PBXGroup;
 			children = (
-				A8F6D98A16A1C080006187EC /* DaylightSavingsTester */,
-				A8F6D98716A1C080006187EC /* Frameworks */,
-				A8F6D98516A1C080006187EC /* Products */,
+				A8F6DA0216A1E908006187EC /* ArrayNameWordChallenge */,
+				A8F6D9FF16A1E908006187EC /* Frameworks */,
+				A8F6D9FD16A1E908006187EC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A8F6D98516A1C080006187EC /* Products */ = {
+		A8F6D9FD16A1E908006187EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A8F6D98416A1C080006187EC /* DaylightSavingsTester */,
+				A8F6D9FC16A1E908006187EC /* ArrayNameWordChallenge */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A8F6D98716A1C080006187EC /* Frameworks */ = {
+		A8F6D9FF16A1E908006187EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A8F6D98816A1C080006187EC /* Foundation.framework */,
+				A8F6DA0016A1E908006187EC /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A8F6D98A16A1C080006187EC /* DaylightSavingsTester */ = {
+		A8F6DA0216A1E908006187EC /* ArrayNameWordChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				A8F6D98B16A1C080006187EC /* main.m */,
-				A8F6D98D16A1C080006187EC /* Supporting Files */,
+				A8F6DA0316A1E908006187EC /* main.m */,
+				A8F6DA0516A1E908006187EC /* Supporting Files */,
 			);
-			path = DaylightSavingsTester;
+			path = ArrayNameWordChallenge;
 			sourceTree = "<group>";
 		};
-		A8F6D98D16A1C080006187EC /* Supporting Files */ = {
+		A8F6DA0516A1E908006187EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A8F6D98E16A1C080006187EC /* DaylightSavingsTester-Prefix.pch */,
+				A8F6DA0616A1E909006187EC /* ArrayNameWordChallenge-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -87,62 +87,62 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A8F6D98316A1C080006187EC /* DaylightSavingsTester */ = {
+		A8F6D9FB16A1E908006187EC /* ArrayNameWordChallenge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A8F6D99316A1C080006187EC /* Build configuration list for PBXNativeTarget "DaylightSavingsTester" */;
+			buildConfigurationList = A8F6DA0B16A1E909006187EC /* Build configuration list for PBXNativeTarget "ArrayNameWordChallenge" */;
 			buildPhases = (
-				A8F6D98016A1C080006187EC /* Sources */,
-				A8F6D98116A1C080006187EC /* Frameworks */,
-				A8F6D98216A1C080006187EC /* CopyFiles */,
+				A8F6D9F816A1E908006187EC /* Sources */,
+				A8F6D9F916A1E908006187EC /* Frameworks */,
+				A8F6D9FA16A1E908006187EC /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = DaylightSavingsTester;
-			productName = DaylightSavingsTester;
-			productReference = A8F6D98416A1C080006187EC /* DaylightSavingsTester */;
+			name = ArrayNameWordChallenge;
+			productName = ArrayNameWordChallenge;
+			productReference = A8F6D9FC16A1E908006187EC /* ArrayNameWordChallenge */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A8F6D97B16A1C080006187EC /* Project object */ = {
+		A8F6D9F316A1E908006187EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Ryan Blunden";
 			};
-			buildConfigurationList = A8F6D97E16A1C080006187EC /* Build configuration list for PBXProject "DaylightSavingsTester" */;
+			buildConfigurationList = A8F6D9F616A1E908006187EC /* Build configuration list for PBXProject "ArrayNameWordChallenge" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = A8F6D97916A1C080006187EC;
-			productRefGroup = A8F6D98516A1C080006187EC /* Products */;
+			mainGroup = A8F6D9F116A1E908006187EC;
+			productRefGroup = A8F6D9FD16A1E908006187EC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A8F6D98316A1C080006187EC /* DaylightSavingsTester */,
+				A8F6D9FB16A1E908006187EC /* ArrayNameWordChallenge */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A8F6D98016A1C080006187EC /* Sources */ = {
+		A8F6D9F816A1E908006187EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8F6D98C16A1C080006187EC /* main.m in Sources */,
+				A8F6DA0416A1E908006187EC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A8F6D99116A1C080006187EC /* Debug */ = {
+		A8F6DA0916A1E909006187EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -172,7 +172,7 @@
 			};
 			name = Debug;
 		};
-		A8F6D99216A1C080006187EC /* Release */ = {
+		A8F6DA0A16A1E909006187EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -195,20 +195,20 @@
 			};
 			name = Release;
 		};
-		A8F6D99416A1C080006187EC /* Debug */ = {
+		A8F6DA0C16A1E909006187EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DaylightSavingsTester/DaylightSavingsTester-Prefix.pch";
+				GCC_PREFIX_HEADER = "ArrayNameWordChallenge/ArrayNameWordChallenge-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		A8F6D99516A1C080006187EC /* Release */ = {
+		A8F6DA0D16A1E909006187EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DaylightSavingsTester/DaylightSavingsTester-Prefix.pch";
+				GCC_PREFIX_HEADER = "ArrayNameWordChallenge/ArrayNameWordChallenge-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -216,24 +216,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A8F6D97E16A1C080006187EC /* Build configuration list for PBXProject "DaylightSavingsTester" */ = {
+		A8F6D9F616A1E908006187EC /* Build configuration list for PBXProject "ArrayNameWordChallenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A8F6D99116A1C080006187EC /* Debug */,
-				A8F6D99216A1C080006187EC /* Release */,
+				A8F6DA0916A1E909006187EC /* Debug */,
+				A8F6DA0A16A1E909006187EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A8F6D99316A1C080006187EC /* Build configuration list for PBXNativeTarget "DaylightSavingsTester" */ = {
+		A8F6DA0B16A1E909006187EC /* Build configuration list for PBXNativeTarget "ArrayNameWordChallenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A8F6D99416A1C080006187EC /* Debug */,
-				A8F6D99516A1C080006187EC /* Release */,
+				A8F6DA0C16A1E909006187EC /* Debug */,
+				A8F6DA0D16A1E909006187EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A8F6D97B16A1C080006187EC /* Project object */;
+	rootObject = A8F6D9F316A1E908006187EC /* Project object */;
 }
