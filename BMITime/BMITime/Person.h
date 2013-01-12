@@ -16,11 +16,8 @@
   int weightInKilos;
 }
 
-// You will be able to set those instance cariables useing these methods
-- (float)heightInMeters;
-- (void)setHeightInMeters:(float)h;
-- (int)weightInKilos;
-- (void)setWeightInKilos:(int)w;
+@property float heightInMeters;
+@property int weightInKilos;
 
 // This method calculates the Body Mass Inde
 - (float)bodyMassIndex;
