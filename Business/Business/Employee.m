@@ -30,7 +30,7 @@
   }
 }
 
-- (unsigned int)vauleOfAssets {
+- (unsigned int)valueOfAssets {
   // Sum up the resale value of assets
   unsigned int sum = 0;
   for (Asset *asset in assets) {

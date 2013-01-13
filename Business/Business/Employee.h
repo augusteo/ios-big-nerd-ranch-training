@@ -23,6 +23,6 @@
 
 - (void)addAssetObject:(Asset *)a;
 
-- (unsigned int)vaueOfAssets;
+- (unsigned int)valueOfAssets;
 
 @end
