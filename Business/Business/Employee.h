@@ -10,16 +10,14 @@
 
 @class Asset;
 
-@interface Employee : Person {
-  int employeeId;
-  Person *spouse;
-  NSMutableArray *children;
-  NSMutableSet *assets;
-}
+@interface Employee : Person
 
 @property int employeeId;
 @property Person *spouse;
 @property NSMutableArray *children;
+@property NSMutableSet *assets;
+
+- (id)initWithEmployeeId:(int)eId;
 
 - (void)addAssetObject:(Asset *)a;
 

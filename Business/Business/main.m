@@ -40,14 +40,12 @@ int main(int argc, const char *argv[]) {
 
     // Create an array of Executive objects
     NSMutableDictionary *executives = [[NSMutableDictionary alloc] init];
-    NSArray *executivePositions = [NSArray arrayWithObjects:@"CEO", @"CTO", @"VP", @"Director", @"Manager"];
+    NSArray *executivePositions = [NSArray arrayWithObjects:@"CEO", @"CTO", @"VP", @"Director", @"Manager", nil];
 
     for (NSString *position in executivePositions) {
-      Employee *exec = [[Employee alloc] init];
+      Employee *exec = [[Employee alloc] initWithFirstName:[names objectAtIndex:arc4random() % [names count]]
+                                                  lastName:[names objectAtIndex:arc4random() % [names count]]];
       [executives setObject:exec forKey:position];
-
-      exec.firstName = [names objectAtIndex:arc4random() % [names count]];
-      exec.lastName = [names objectAtIndex:arc4random() % [names count]];
 
       // Execs get company cars
       Asset *car = [[Asset alloc] init];
@@ -65,7 +63,8 @@ int main(int argc, const char *argv[]) {
     for (int i = 0; i < 10; i++) {
 
       // Create an instance of Employee
-      Employee *employee = [[Employee alloc] init];
+      Employee *employee = [[Employee alloc] initWithFirstName:[names objectAtIndex:arc4random() % [names count]]
+                                                      lastName:[names objectAtIndex:arc4random() % [names count]]];
 
       // Add employee to employee array
       [employees addObject:employee];

@@ -11,7 +11,14 @@
 
 @implementation Employee
 
-@synthesize employeeId, spouse, children;
+- (id)initWithEmployeeId:(int)eId {
+  self = [super init];
+  if (self) {
+    [self setEmployeeId:eId];
+  }
+
+  return self;
+}
 
 - (NSString *)description {
   return [NSString stringWithFormat:@"<%@ %@ - $%d>", [self firstName], [self lastName], [self valueOfAssets]];
@@ -19,13 +26,13 @@
 
 - (void)addAssetObject:(Asset *)a {
   // Is assets nil?
-  if (!assets) {
-    assets = [[NSMutableSet alloc] init];
+  if (![self assets]) {
+    [self setAssets:[[NSMutableSet alloc] init]];
   }
 
   // Check is asset before adding
   if ([a isKindOfClass:[Asset class]]) {
-    [assets addObject:a];
+    [[self assets] addObject:a];
     [a setHolder:self];
   }
 }
@@ -33,7 +40,7 @@
 - (unsigned int)valueOfAssets {
   // Sum up the resale value of assets
   unsigned int sum = 0;
-  for (Asset *asset in assets) {
+  for (Asset *asset in [self assets]) {
     sum += [asset resaleValue];
   }
 

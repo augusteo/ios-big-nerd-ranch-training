@@ -10,6 +10,18 @@
 
 @implementation Person
 
-@synthesize firstName, lastName;
+- (id)init {
+  return [self initWithFirstName:@"" lastName:@""];
+}
+
+- (id)initWithFirstName:(NSString *)fn lastName:(NSString *)ln {
+  self = [super init];
+  if (self) {
+    [self setFirstName:fn];
+    [self setLastName:ln];
+  }
+
+  return self;
+}
 
 @end
