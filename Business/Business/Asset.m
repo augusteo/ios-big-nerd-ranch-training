@@ -10,7 +10,9 @@
 
 @implementation Asset
 
-@synthesize label, resaleValue;
+// Don't explicityly sythesize anymore, it is done for you
+// Using @synthesize exolicitly will control the instance variable name backing the property
+//@synthesize label, resaleValue;
 
 - (NSString *)description {
   if ([self holder]) {

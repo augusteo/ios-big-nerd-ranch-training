@@ -9,11 +9,7 @@
 
 @class Employee;
 
-@interface Asset : NSObject {
-  NSString *label;
-//  __weak Employee *holder;
-  unsigned int resaleValue;
-}
+@interface Asset : NSObject
 
 @property(strong) NSString *label;
 @property(weak) Employee *holder;
