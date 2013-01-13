@@ -14,13 +14,13 @@
 @synthesize employeeId, spouse, children;
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"<%@ %@>", firstName, lastName];
+  return [NSString stringWithFormat:@"<%@ %@ - $%d>", [self firstName], [self lastName], [self valueOfAssets]];
 }
 
 - (void)addAssetObject:(Asset *)a {
   // Is assets nil?
   if (!assets) {
-    assets = [[NSMutableArray alloc] init];
+    assets = [[NSMutableSet alloc] init];
   }
 
   // Check is asset before adding

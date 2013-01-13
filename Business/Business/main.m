@@ -38,6 +38,24 @@ int main(int argc, const char *argv[]) {
     NSString *nameString = [NSString stringWithContentsOfFile:@"/usr/share/dict/propernames" encoding:NSUTF8StringEncoding error:NULL];
     NSArray *names = [nameString componentsSeparatedByString:@"\n"];
 
+    // Create an array of Executive objects
+    NSMutableDictionary *executives = [[NSMutableDictionary alloc] init];
+    NSArray *executivePositions = [NSArray arrayWithObjects:@"CEO", @"CTO", @"VP", @"Director", @"Manager"];
+
+    for (NSString *position in executivePositions) {
+      Employee *exec = [[Employee alloc] init];
+      [executives setObject:exec forKey:position];
+
+      exec.firstName = [names objectAtIndex:arc4random() % [names count]];
+      exec.lastName = [names objectAtIndex:arc4random() % [names count]];
+
+      // Execs get company cars
+      Asset *car = [[Asset alloc] init];
+      car.label = @"Audi";
+      car.resaleValue = 60000;
+      [exec addAssetObject:car];
+    }
+
     // Create an array of Employee objects
     NSMutableArray *employees = [[NSMutableArray alloc] init];
 
@@ -61,7 +79,7 @@ int main(int argc, const char *argv[]) {
       for (int j = 0; j < numberAssets; j++) {
         Asset *asset = [[Asset alloc] init];
         [asset setLabel:[NSString stringWithFormat:@"Laptop: %d", j]];
-        [asset setResaleValue:j * 17];
+        [asset setResaleValue:100 + arc4random() % 1000];
 
         [employee addAssetObject:asset];
 
@@ -69,13 +87,28 @@ int main(int argc, const char *argv[]) {
       }
     }
 
-    NSLog(@"%@", allAssets);
+    NSSortDescriptor *valueOfAssetsDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"valueOfAssets" ascending:YES];
+    NSSortDescriptor *employeeIdDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"employeeId" ascending:YES];
+    [employees sortUsingDescriptors:[NSArray arrayWithObjects:valueOfAssetsDescriptor, employeeIdDescriptor, nil]];
+
+    NSLog(@"### Executives ###\n\n%@\n\n", executives);
+
+    NSLog(@"## Employees ##\n\n%@\n\n", employees);
 
     // Remove one employee
     // When we remove this employee, it is de-allocated because it no longer has an owner
     [employees removeObjectAtIndex:4];
 
-    // Remove all employees and assets - triggers de-allocation of all remaining employees adn their assets
+    NSLog(@"allAssets: %@", allAssets);
+
+    // Reclaim employee assets if over $1000
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"holder.valueOfAssets > 1000"];
+    NSArray *toBeReclaimed = [allAssets filteredArrayUsingPredicate:predicate];
+    NSLog(@"To be Reclaimed: %@", toBeReclaimed);
+    toBeReclaimed = nil;
+    // Cleanup
+
+    executives = nil;
     employees = nil;
     allAssets = nil;
   }

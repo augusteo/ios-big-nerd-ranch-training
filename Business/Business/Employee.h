@@ -14,7 +14,7 @@
   int employeeId;
   Person *spouse;
   NSMutableArray *children;
-  NSMutableArray *assets;
+  NSMutableSet *assets;
 }
 
 @property int employeeId;
