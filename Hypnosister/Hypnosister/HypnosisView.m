@@ -12,7 +12,7 @@
 - (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    [self setBackgroundColor:[UIColor redColor]];
+    [self setBackgroundColor:[UIColor clearColor]];
   }
   return self;
 }
@@ -34,7 +34,7 @@
 
   // The color of the line should be gray (red/ green/ blue = 0.6, alpha = 1.0);
 //  CGContextSetRGBStrokeColor(ctx, 0.6, 0.6, 0.6, 1.0);
-  [[UIColor blueColor] setStroke];
+  [[UIColor lightGrayColor] setStroke];
 
   // DRaw concentric circles from the outside in
   for (float currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20) {
