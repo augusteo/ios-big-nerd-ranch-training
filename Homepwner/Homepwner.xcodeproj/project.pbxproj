@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41585A089C8EB584FFC175BF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158582136161385D66F6958 /* Constants.m */; };
+		41585C21C3D1586569F389DC /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 415854AD59503F7C1B76969B /* BNRItem.m */; };
+		41585C32B261FB9F967064A5 /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 41585FCF8851023AD2ADAB63 /* BNRItemStore.m */; };
+		41585D673CF76412A901C41D /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41585C2442C449CD9820748A /* ItemsViewController.m */; };
 		A839FCF816A4CC910048E3BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A839FCF716A4CC910048E3BC /* UIKit.framework */; };
 		A839FCFA16A4CC910048E3BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A839FCF916A4CC910048E3BC /* Foundation.framework */; };
 		A839FCFC16A4CC910048E3BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A839FCFB16A4CC910048E3BC /* CoreGraphics.framework */; };
@@ -19,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		415853BA54C68788AD509DAC /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
+		415853BE894CF163873B73F4 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
+		415854AD59503F7C1B76969B /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
+		415856DB55574812310903C0 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
+		4158582136161385D66F6958 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		41585C2442C449CD9820748A /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
+		41585F67BB6A8E96699EF368 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		41585FCF8851023AD2ADAB63 /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
 		A839FCF316A4CC910048E3BC /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A839FCF716A4CC910048E3BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A839FCF916A4CC910048E3BC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -81,6 +93,14 @@
 				A839FD0616A4CC920048E3BC /* HomepwnerAppDelegate.h */,
 				A839FD0716A4CC920048E3BC /* HomepwnerAppDelegate.m */,
 				A839FCFE16A4CC920048E3BC /* Supporting Files */,
+				41585C2442C449CD9820748A /* ItemsViewController.m */,
+				415853BA54C68788AD509DAC /* ItemsViewController.h */,
+				415854AD59503F7C1B76969B /* BNRItem.m */,
+				415856DB55574812310903C0 /* BNRItem.h */,
+				41585FCF8851023AD2ADAB63 /* BNRItemStore.m */,
+				415853BE894CF163873B73F4 /* BNRItemStore.h */,
+				4158582136161385D66F6958 /* Constants.m */,
+				41585F67BB6A8E96699EF368 /* Constants.h */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -167,6 +187,10 @@
 			files = (
 				A839FD0416A4CC920048E3BC /* main.m in Sources */,
 				A839FD0816A4CC920048E3BC /* HomepwnerAppDelegate.m in Sources */,
+				41585D673CF76412A901C41D /* ItemsViewController.m in Sources */,
+				41585C21C3D1586569F389DC /* BNRItem.m in Sources */,
+				41585C32B261FB9F967064A5 /* BNRItemStore.m in Sources */,
+				41585A089C8EB584FFC175BF /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
