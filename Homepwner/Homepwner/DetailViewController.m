@@ -20,9 +20,35 @@
 
 @implementation DetailViewController
 
+- (id)init {
+  self = [super init];
+  if (self) {
+    // Create a new bar button item that will send done to DetailViewController
+    UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                                         target:self action:@selector(finishEditing)];
+    [[self navigationItem] setRightBarButtonItem:bbi];
+  }
+
+  return self;
+}
+
 - (void)setItem:(BNRItem *)item {
   _item = item;
   [[self navigationItem] setTitle:[[self item] itemName]];
+}
+
+- (void)viewWasSingleFingerTapped {
+  //[self findAndResignFirstResponder];
+  [[self view] endEditing:YES];
+
+}
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  UIGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector
+                                                                                 (viewWasSingleFingerTapped)];
+  [[self view] addGestureRecognizer:singleFingerTap];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -44,14 +70,32 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self finishEditing];
+}
 
-  // Clear the first responder
-  [[self view] endEditing:YES];
-
+- (void)saveItem {
   // Save changes to item
   BNRItem *item = [self item];
   [item setItemName:[[self nameField] text]];
   [item setSerialNumber:[[self serialField] text]];
   [item setValueInDollars:[[[self valueField] text] intValue]];
+}
+
+- (void)finishEditing {
+  [self saveItem];
+  [[self view] endEditing:YES];
+  [[self navigationController] popToRootViewControllerAnimated:YES];
+}
+
+- (BOOL)findAndResignFirstResponder {
+  if (self.view.isFirstResponder) {
+    [self resignFirstResponder];
+    return YES;
+  }
+  for (UIView *subView in [[self view] subviews]) {
+    if ([subView resignFirstResponder])
+      return YES;
+  }
+  return NO;
 }
 @end

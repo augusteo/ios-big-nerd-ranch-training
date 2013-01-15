@@ -16,8 +16,6 @@
 
 - (IBAction)addNewItem:(id)sender;
 
-- (IBAction)toggleEditingMode:(id)sender;
-
 @end
 
 @implementation ItemsViewController
@@ -69,42 +67,6 @@
 
   return cell;
 
-}
-
-- (UIView *)headerView {
-  // If we haven't loaded the header view yet
-  if (!_headerView) {
-    [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-  }
-
-  return _headerView;
-}
-
-- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)sec {
-  return [self headerView];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  // The height of the header view should be determined from the height of the view in the XIB file
-  return [[self headerView] bounds].size.height;
-}
-
-- (IBAction)toggleEditingMode:(id)sender {
-  // If we are curently in editing mode...
-  if ([self isEditing]) {
-    // Change text of button to inform user of state
-    [sender setTitle:@"Edit" forState:UIControlStateNormal];
-
-    // Turn off editing mode
-    [self setEditing:NO animated:YES];
-  }
-  else {
-    // Change text of button to inform user of state
-    [sender setTitle:@"Done" forState:UIControlStateNormal];
-
-    // Enter editing mode
-    [self setEditing:YES animated:YES];
-  }
 }
 
 - (IBAction)addNewItem:(id)sender {
