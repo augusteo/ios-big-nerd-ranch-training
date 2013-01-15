@@ -47,4 +47,17 @@
   return p;
 }
 
+- (NSArray *)getItemsByLowerPriceBoundary:(int)lowerPrice upperPriceBoundary:(int)upperPrice {
+  NSMutableArray *items = [[NSMutableArray alloc] init];
+
+  for (int i = 0; i < [_allItems count]; i++) {
+    BNRItem *item = [_allItems objectAtIndex:i];
+    if (item.valueInDollars >= lowerPrice && item.valueInDollars <= upperPrice) {
+      [items addObject:item];
+    }
+  }
+
+  return [[NSArray alloc] initWithArray:items];
+}
+
 @end

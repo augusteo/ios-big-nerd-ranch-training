@@ -34,7 +34,7 @@
     // for "unsigned long"
     
     NSString *randomName = [NSString stringWithFormat:@"%@ %@",
-                            [randomAdjectiveList objectAtIndex:adjectiveIndex],
+                             [randomAdjectiveList objectAtIndex:adjectiveIndex],
                             [randomNounList objectAtIndex:nounIndex]];
     int randomValue = rand() % 100;
     NSString *randomSerialNumber = [NSString stringWithFormat:@"%c%c%c%c%c",

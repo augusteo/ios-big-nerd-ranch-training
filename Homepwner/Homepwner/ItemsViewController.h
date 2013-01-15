@@ -8,5 +8,8 @@
 #import <Foundation/Foundation.h>
 #import "Constants.h"
 
-@interface ItemsViewController : UITableViewController <UITableViewDataSource>
+@interface ItemsViewController : UITableViewController <UITableViewDataSource> {
+  NSMutableArray *cheapItems;
+  NSMutableArray *otherItems;
+}
 @end

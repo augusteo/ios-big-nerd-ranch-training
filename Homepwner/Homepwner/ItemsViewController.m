@@ -16,12 +16,21 @@
 - (id)init {
   self = [super initWithStyle:UITableViewStyleGrouped];
   if (self) {
-    for(int i = 0; i < 100; i++) {
+    for(int i = 0; i < 30; i++) {
       [[BNRItemStore sharedStore] createItem];
     }
+
+    cheapItems = [[BNRItemStore sharedStore] getItemsByLowerPriceBoundary:0 upperPriceBoundary:50];
+    otherItems = [[BNRItemStore sharedStore] getItemsByLowerPriceBoundary:51 upperPriceBoundary:10000];
   }
 
   return self;
+}
+
+//http://randomimage.setgetgo.com/get.php?key=24&height=50&width=50&type=png
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+  return section == 0 ? @"Items $50 and below" : @"Items above $50";
 }
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -29,7 +38,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return [[[BNRItemStore sharedStore] allItems] count];
+  return section == 0 ? [cheapItems count] : [otherItems count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  NSInteger n = 2;
+  return n;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -42,15 +56,11 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kItemsUITableCell];
   }
 
-
-  // Set the text on the cell with the description of the item
-  // that is at the nth index of items, where n = row this cell
-  // will appear in on the tableview
-  NSArray *items = [[BNRItemStore sharedStore] allItems];
-  BNRItem *p = [items objectAtIndex:[indexPath row]];
+  BNRItem *p = [indexPath section] == 0 ?
+      [cheapItems objectAtIndex:[indexPath row]] :
+      [otherItems objectAtIndex:[indexPath row]];
   [[cell textLabel] setText:[p description]];
 
   return cell;
-
 }
 @end

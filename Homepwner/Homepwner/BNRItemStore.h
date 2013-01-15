@@ -16,4 +16,6 @@
 
 - (BNRItem *)createItem;
 
+- (NSArray *)getItemsByLowerPriceBoundary:(int)lowerPrice upperPriceBoundary:(int)upperPrice;
+
 @end
