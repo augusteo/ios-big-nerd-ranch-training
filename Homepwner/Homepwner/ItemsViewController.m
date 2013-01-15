@@ -8,6 +8,7 @@
 #import "ItemsViewController.h"
 #import "BNRItemStore.h"
 #import "BNRItem.h"
+#import "DetailViewController.h"
 
 @interface ItemsViewController ()
 
@@ -24,6 +25,17 @@
 - (id)init {
   self = [super initWithStyle:UITableViewStyleGrouped];
   if (self) {
+    UINavigationItem *n = [self navigationItem];
+    [n setTitle:@"Homepwner"];
+
+    // Create a new bar button item that will send addNewItem: to ItemsViewController
+    UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                         target:self action:@selector(addNewItem:)];
+
+    // Set this bar button item as the right item in the navigationItem
+    [[self navigationItem] setRightBarButtonItem:bbi];
+
+    [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
   }
 
   return self;
@@ -125,5 +137,23 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
   [[BNRItemStore sharedStore] moveItemAtIndex:[sourceIndexPath row] toIndex:[toIndexPath row]];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  DetailViewController *detailViewController = [[DetailViewController alloc] init];
+
+  NSArray *items = [[BNRItemStore sharedStore] allItems];
+  BNRItemStore *selectedItem = [items objectAtIndex:[indexPath row]];
+
+  // Give detail view controller a pointer to the item object in row
+  [detailViewController setItem:selectedItem];
+
+  // Push it onto the top of the navigation controller's stack
+  [[self navigationController] pushViewController:detailViewController animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [[self tableView] reloadData];
 }
 @end
