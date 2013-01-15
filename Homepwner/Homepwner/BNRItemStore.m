@@ -47,4 +47,22 @@
   return p;
 }
 
+- (void)removeItem:(BNRItem *)item {
+  // We don't use "removeObject" here as that the message "isEqual" is sent to each object which the object can override
+  // Using removeObjectIdenticalTo ensures we're removing the same object passed in
+  [_allItems removeObjectIdenticalTo:item];
+}
+
+- (void)moveItemAtIndex:(int)from toIndex:(int)to {
+  if (from == to) {
+    return;
+  }
+
+  // Get item
+  BNRItem *p = [_allItems objectAtIndex:from];
+  [_allItems removeObjectAtIndex:from];
+  [_allItems insertObject:p atIndex:to];
+
+}
+
 @end
