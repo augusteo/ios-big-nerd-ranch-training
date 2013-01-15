@@ -24,6 +24,8 @@
 		A839FD0A16A4CC920048E3BC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A839FD0916A4CC920048E3BC /* Default.png */; };
 		A839FD0C16A4CC920048E3BC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A839FD0B16A4CC920048E3BC /* Default@2x.png */; };
 		A839FD0E16A4CC920048E3BC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A839FD0D16A4CC920048E3BC /* Default-568h@2x.png */; };
+		A8C22B3A16A5FF260086901C /* DeleteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C22B3816A5FF260086901C /* DeleteIcon.png */; };
+		A8C22B3B16A5FF260086901C /* DeleteIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C22B3916A5FF260086901C /* DeleteIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		A839FD0916A4CC920048E3BC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A839FD0B16A4CC920048E3BC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A839FD0D16A4CC920048E3BC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A8C22B3816A5FF260086901C /* DeleteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeleteIcon.png; sourceTree = "<group>"; };
+		A8C22B3916A5FF260086901C /* DeleteIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DeleteIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 		A839FCE816A4CC910048E3BC = {
 			isa = PBXGroup;
 			children = (
+				A8C22B3416A5FEA50086901C /* Assets */,
 				A839FCFD16A4CC910048E3BC /* Homepwner */,
 				A839FCF616A4CC910048E3BC /* Frameworks */,
 				A839FCF416A4CC910048E3BC /* Products */,
@@ -135,6 +140,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A8C22B3416A5FEA50086901C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A8C22B3816A5FF260086901C /* DeleteIcon.png */,
+				A8C22B3916A5FF260086901C /* DeleteIcon@2x.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,6 +207,8 @@
 				A839FD0E16A4CC920048E3BC /* Default-568h@2x.png in Resources */,
 				41585FECDA2C695C0366F23B /* HeaderView.xib in Resources */,
 				41585B9F45C9DB27BD54F792 /* DetailViewController.xib in Resources */,
+				A8C22B3A16A5FF260086901C /* DeleteIcon.png in Resources */,
+				A8C22B3B16A5FF260086901C /* DeleteIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +335,7 @@
 				A839FD1316A4CC920048E3BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

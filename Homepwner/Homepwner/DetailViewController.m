@@ -18,10 +18,13 @@
 @property(weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property(weak, nonatomic) IBOutlet UIToolbar *toolbarView;
 @property(weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *deletePictureButton;
 
 - (IBAction)backgroundTapped:(id)sender;
 
 - (IBAction)takePicture:(id)sender;
+
+- (IBAction)deletePicture:(id)sender;
 
 @end
 
@@ -42,6 +45,13 @@
 - (void)setItem:(BNRItem *)item {
   _item = item;
   [[self navigationItem] setTitle:[[self item] itemName]];
+}
+
+- (IBAction)deletePicture:(id)sender {
+  [[BNRImageStore sharedStore] removeImageForKey:[[self item] imageKey]];
+  [[self item] setImageKey:nil];
+  [[self imageView] setImage:nil];
+  [[self deletePictureButton] setHidden:TRUE];
 }
 
 - (IBAction)backgroundTapped:(id)sender {
@@ -89,6 +99,7 @@
   }
   else {
     [[self imageView] setImage:nil];
+    [[self deletePictureButton] setHidden:YES];
   }
 }
 
@@ -159,6 +170,7 @@
   [[BNRImageStore sharedStore] setImage:image forKey:key];
 
   // Put that image onto the screen in our image view
+  [[self deletePictureButton] setHidden:NO];
   [[self imageView] setImage:image];
 
   // Take image picker off the screen - you must call this dismiss method
