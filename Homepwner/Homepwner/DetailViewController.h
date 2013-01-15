@@ -10,6 +10,6 @@
 
 @class BNRItem;
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) BNRItem *item;
 @end

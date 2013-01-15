@@ -1,1 +1,1 @@
-extern NSString const *kItemsUITableCell;
+extern NSString *const kItemsUITableCell;

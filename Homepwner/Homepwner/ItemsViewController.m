@@ -105,7 +105,7 @@
   DetailViewController *detailViewController = [[DetailViewController alloc] init];
 
   NSArray *items = [[BNRItemStore sharedStore] allItems];
-  BNRItemStore *selectedItem = [items objectAtIndex:[indexPath row]];
+  BNRItem *selectedItem = [items objectAtIndex:[indexPath row]];
 
   // Give detail view controller a pointer to the item object in row
   [detailViewController setItem:selectedItem];

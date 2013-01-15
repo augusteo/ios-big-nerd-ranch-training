@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "BNRItem.h"
+#import "BNRImageStore.h"
 
 @interface DetailViewController ()
 
@@ -15,6 +16,12 @@
 @property(weak, nonatomic) IBOutlet UITextField *serialField;
 @property(weak, nonatomic) IBOutlet UITextField *valueField;
 @property(weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property(weak, nonatomic) IBOutlet UIToolbar *toolbarView;
+@property(weak, nonatomic) IBOutlet UIImageView *imageView;
+
+- (IBAction)backgroundTapped:(id)sender;
+
+- (IBAction)takePicture:(id)sender;
 
 @end
 
@@ -37,6 +44,10 @@
   [[self navigationItem] setTitle:[[self item] itemName]];
 }
 
+- (IBAction)backgroundTapped:(id)sender {
+  [[self view] endEditing:YES];
+}
+
 - (void)viewWasSingleFingerTapped {
   //[self findAndResignFirstResponder];
   [[self view] endEditing:YES];
@@ -45,10 +56,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  UIGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                 action:@selector
-                                                                                 (viewWasSingleFingerTapped)];
-  [[self view] addGestureRecognizer:singleFingerTap];
+  // The other way to achieve this is to have the view be a type of class UIControl
+  // That way, it can send the message "backgroundTapped" to its delegate
+  //
+  //UIGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+  //                                                                               action:@selector
+  //                                                                               (viewWasSingleFingerTapped)];
+  //[[self view] addGestureRecognizer:singleFingerTap];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,11 +80,21 @@
 
   // Use filtered NSDate object to set dateLabel contents
   [[self dateLabel] setText:[dateFormatter stringFromDate:[item dateCreated]]];
+
+  NSString *imageKey = [[self item] imageKey];
+
+  if (imageKey) {
+    UIImage *imageToDisplay = [[BNRImageStore sharedStore] imageForKey:imageKey];
+    [[self imageView] setImage:imageToDisplay];
+  }
+  else {
+    [[self imageView] setImage:nil];
+  }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [self finishEditing];
+  [super viewWillDisappear:animated];
+  [self saveItem];
 }
 
 - (void)saveItem {
@@ -97,5 +121,52 @@
       return YES;
   }
   return NO;
+}
+
+- (IBAction)takePicture:(id)sender {
+  UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+
+  // If our devices has a camera, we want to take a picture, otherwise, we just pick from the photo library
+  if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+  }
+  else {
+    [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+  }
+
+  [imagePicker setDelegate:self];
+
+  // place image picker on the screen
+  [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+  NSString *oldKey = [[self item] imageKey];
+  if (oldKey) {
+    [[BNRImageStore sharedStore] removeImageForKey:oldKey];
+  }
+
+  // Get picked image from info dictionary
+  UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+  // Create a NSUUID object - and get its string representation
+  NSUUID *uuid = [[NSUUID alloc] init];
+  NSString *key = [uuid UUIDString];
+
+  [[self item] setImageKey:key];
+
+  // Store the image in the BNRImagetore for this key
+  [[BNRImageStore sharedStore] setImage:image forKey:key];
+
+  // Put that image onto the screen in our image view
+  [[self imageView] setImage:image];
+
+  // Take image picker off the screen - you must call this dismiss method
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  return YES;
 }
 @end
