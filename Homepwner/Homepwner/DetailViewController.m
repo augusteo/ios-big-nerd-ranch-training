@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "BNRItem.h"
 #import "BNRImageStore.h"
+#import "BNRItemStore.h"
 
 @interface DetailViewController () {
   UIPopoverController *_imagePickerPopover;
@@ -21,6 +22,7 @@
 @property(weak, nonatomic) IBOutlet UIToolbar *toolbarView;
 @property(weak, nonatomic) IBOutlet UIImageView *imageView;
 @property(weak, nonatomic) IBOutlet UIButton *deletePictureButton;
+@property(weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
 - (IBAction)backgroundTapped:(id)sender;
 
@@ -44,10 +46,47 @@
   return self;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  @throw [NSException exceptionWithName:@"Wrong initializer" reason:@"Use initForNewItem:"
+                               userInfo:nil];
+}
+
 - (void)setItem:(BNRItem *)item {
   _item = item;
   [[self navigationItem] setTitle:[[self item] itemName]];
 }
+
+- (id)initForViewItem:(BOOL)isNew {
+  self = [super initWithNibName:@"DetailViewController" bundle:nil];
+
+  if (self) {
+    if (isNew) {
+      UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self
+                                                                                action:@selector(save:)];
+      [[self navigationItem] setRightBarButtonItem:doneItem];
+
+      UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                  target:self
+                                                                                  action:@selector(cancel:)];
+      [[self navigationItem] setLeftBarButtonItem:cancelItem];
+    }
+  }
+
+  return self;
+}
+
+- (void)save:(id)save {
+  [[self presentingViewController] dismissViewControllerAnimated:YES completion:[self dismissBlock]];
+}
+
+- (void)cancel:(id)cancel {
+  // If the user cancalled, then remove the BNRItem from the store
+  [[BNRItemStore sharedStore] removeItem:[self item]];
+
+  [[self presentingViewController] dismissViewControllerAnimated:YES completion:[self dismissBlock]];
+}
+
 
 - (IBAction)deletePicture:(id)sender {
   [[BNRImageStore sharedStore] removeImageForKey:[[self item] imageKey]];
@@ -135,10 +174,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-  [self saveItem];
+  [self saveItem:nil];
 }
 
-- (void)saveItem {
+- (void)saveItem:(id)o {
   // Save changes to item
   BNRItem *item = [self item];
   [item setItemName:[[self nameField] text]];
@@ -147,7 +186,7 @@
 }
 
 - (void)finishEditing {
-  [self saveItem];
+  [self saveItem:nil];
   [[self view] endEditing:YES];
   [[self navigationController] popToRootViewControllerAnimated:YES];
 }
@@ -242,5 +281,18 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   [textField resignFirstResponder];
   return YES;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+      [[self imageView] setHidden:YES];
+      [[self cameraButton] setEnabled:NO];
+    }
+    else {
+      [[self imageView] setHidden:NO];
+      [[self cameraButton] setEnabled:YES];
+    }
+  }
 }
 @end

@@ -73,15 +73,21 @@
   /// Create a new BNRItem and add it to the store
   BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
 
-  // / Figure out where that item is in the array
-  int lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
-  NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
+  DetailViewController *detailViewController = [[DetailViewController alloc] initForViewItem:YES];
 
-  // Insert into table
-  // We could get a reference to the UITableView instance by using [self view] but as this is inherited
-  // from UIViewController, it has no knowledge about what type of view it is
-  // Using [self tableView] tells the compiler (and your IDE) that we're dealing with a view of type UITableView
-  [[self tableView] insertRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationTop];
+  [detailViewController setItem:newItem];
+
+  [detailViewController setDismissBlock:^{
+    [[self tableView] reloadData];
+  }];
+
+  UINavigationController *navController = [[UINavigationController alloc]
+      initWithRootViewController:detailViewController];
+
+  [navController setModalPresentationStyle:UIModalPresentationFullScreen];
+  [navController setModalTransitionStyle:UIModalTransitionStylePartialCurl];
+
+  [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -102,7 +108,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  DetailViewController *detailViewController = [[DetailViewController alloc] init];
+
+  DetailViewController *detailViewController = [[DetailViewController alloc] initForViewItem:NO];
 
   NSArray *items = [[BNRItemStore sharedStore] allItems];
   BNRItem *selectedItem = [items objectAtIndex:[indexPath row]];
