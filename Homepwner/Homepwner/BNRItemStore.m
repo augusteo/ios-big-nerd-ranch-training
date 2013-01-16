@@ -7,6 +7,7 @@
 
 #import "BNRItemStore.h"
 #import "BNRItem.h"
+#import "BNRImageStore.h"
 
 @interface BNRItemStore () {
   NSMutableArray *_allItems;
@@ -46,14 +47,15 @@
 }
 
 - (BNRItem *)createItem {
-  BNRItem *p = [BNRItem randomItem];
-
+  BNRItem *p = [[BNRItem alloc] init];
   [_allItems addObject:p];
-
   return p;
 }
 
 - (void)removeItem:(BNRItem *)item {
+  NSString *key = [item imageKey];
+  [[BNRImageStore sharedStore] removeImageForKey:key];
+
   // We don't use "removeObject" here as that the message "isEqual" is sent to each object which the object can override
   // Using removeObjectIdenticalTo ensures we're removing the same object passed in
   [_allItems removeObjectIdenticalTo:item];

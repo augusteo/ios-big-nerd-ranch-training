@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface BNRItem : NSObject <NSCoding>
-{
-}
 
 @property (nonatomic, strong) BNRItem *containedItem;
 @property (nonatomic, weak) BNRItem *container;
