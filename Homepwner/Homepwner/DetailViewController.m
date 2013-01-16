@@ -71,54 +71,29 @@
   [super viewDidLoad];
 
   UIImageView *iv = [[UIImageView alloc] initWithImage:nil];
-
-  // The contentMode of the image view in the XIB was Aspect Fit:
   [iv setContentMode:UIViewContentModeScaleAspectFit];
-
   [iv setTranslatesAutoresizingMaskIntoConstraints:NO];
-
-  // The image view was a subview of the view
   [[self view] addSubview:iv];
-
-  // The image view was pointed to by the _imageView instance variable
   [self setImageView:iv];
 
-  NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:[self imageView]
-                                                                   attribute:NSLayoutAttributeTop
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:[self dateLabel]
-                                                                   attribute:NSLayoutAttributeBottom
-                                                                  multiplier:1.0
-                                                                    constant:0.0];
+  NSDictionary *nameMap = @{@"imageView" : [self imageView]};
 
-  [[self view] addConstraint:topConstraint];
+  NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[imageView]-20-|"
+                                                                           options:0
+                                                                           metrics:nil views:nameMap];
+  [[self view] addConstraints:horizontalConstraints];
 
-  NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:[self imageView]
-                                                                    attribute:NSLayoutAttributeLeading
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:[self view]
-                                                                    attribute:NSLayoutAttributeLeading
-                                                                   multiplier:1
-                                                                     constant:0];
-  [[self view] addConstraint:leftConstraint];
+  nameMap = @{
+      @"imageView" : [self imageView],
+      @"dateLabel" : [self dateLabel],
+      @"toolbarView" : [self toolbarView]
+  };
 
-  NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:[self imageView]
-                                                                     attribute:NSLayoutAttributeTrailing
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:[self view]
-                                                                     attribute:NSLayoutAttributeTrailing
-                                                                    multiplier:1
-                                                                      constant:0];
-  [[self view] addConstraint:rightConstraint];
-
-  NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:[self imageView]
-                                                                      attribute:NSLayoutAttributeBottom
-                                                                      relatedBy:NSLayoutRelationEqual
-                                                                         toItem:[self toolbarView]
-                                                                      attribute:NSLayoutAttributeTop
-                                                                     multiplier:1.0
-                                                                       constant:0];
-  [[self view] addConstraint:bottomConstraint];
+  NSString *verticalConstraintVFL = @"V:|-131-[dateLabel(==21)]-20-[imageView]-20-[toolbarView(==44)]-0-|";
+  NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:verticalConstraintVFL
+                                                                         options:0
+                                                                         metrics:nil views:nameMap];
+  [[self view] addConstraints:verticalConstraints];
 }
 
 - (void)viewDidLayoutSubviews {
