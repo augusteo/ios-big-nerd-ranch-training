@@ -6,18 +6,23 @@
 
 
 #import <Foundation/Foundation.h>
+
 @class BNRItem;
 
 @interface BNRItemStore : NSObject
 
 + (BNRItemStore *)sharedStore;
 
-@property (nonatomic, strong, readonly) NSArray *allItems;
+@property(nonatomic, strong, readonly) NSArray *allItems;
 
 - (BNRItem *)createItem;
 
 - (void)removeItem:(BNRItem *)item;
 
 - (void)moveItemAtIndex:(int)from toIndex:(int)to;
+
+- (NSString *)itemArchivePath;
+
+- (BOOL)saveChanges;
 
 @end

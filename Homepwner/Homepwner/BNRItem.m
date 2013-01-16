@@ -26,8 +26,8 @@
   // Note: The % operator, called the modulo operator, gives
   // you the remainder. So adjectiveIndex is a random number
   // from 0 to 2 inclusive.
-  NSUInteger adjectiveIndex = (NSUInteger)(rand() % [randomAdjectiveList count]);
-  NSUInteger nounIndex = (NSUInteger)(rand() % [randomNounList count]);
+  NSUInteger adjectiveIndex = (NSUInteger) (rand() % [randomAdjectiveList count]);
+  NSUInteger nounIndex = (NSUInteger) (rand() % [randomNounList count]);
 
   // Note that NSInteger is not an object, but a type definition
   // for "unsigned long"
@@ -89,6 +89,30 @@
                                        valueInDollars,
                                        dateCreated];
   return descriptionString;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+  [aCoder encodeObject:[self itemName] forKey:@"itemName"];
+  [aCoder encodeObject:[self serialNumber] forKey:@"serialNumber"];
+  [aCoder encodeObject:[self dateCreated] forKey:@"dateCreated"];
+  [aCoder encodeObject:[self imageKey] forKey:@"imageKey"];
+
+  [aCoder encodeInt:[self valueInDollars] forKey:@"valueInDollars"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+  self = [super init];
+  if (self) {
+    [self setItemName:[aDecoder decodeObjectForKey:@"itemName"]];
+    [self setSerialNumber:[aDecoder decodeObjectForKey:@"serialNumber"]];
+    [self setImageKey:[aDecoder decodeObjectForKey:@"imageKey"]];
+
+    [self setValueInDollars:[aDecoder decodeIntForKey:@"valueInDollars"]];
+
+    dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
+  }
+
+  return self;
 }
 
 - (void)dealloc {
