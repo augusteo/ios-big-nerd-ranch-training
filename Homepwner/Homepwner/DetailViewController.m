@@ -10,7 +10,9 @@
 #import "BNRItem.h"
 #import "BNRImageStore.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () {
+  UIPopoverController *_imagePickerPopover;
+}
 
 @property(weak, nonatomic) IBOutlet UITextField *nameField;
 @property(weak, nonatomic) IBOutlet UITextField *serialField;
@@ -18,7 +20,7 @@
 @property(weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property(weak, nonatomic) IBOutlet UIToolbar *toolbarView;
 @property(weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *deletePictureButton;
+@property(weak, nonatomic) IBOutlet UIButton *deletePictureButton;
 
 - (IBAction)backgroundTapped:(id)sender;
 
@@ -51,11 +53,12 @@
   [[BNRImageStore sharedStore] removeImageForKey:[[self item] imageKey]];
   [[self item] setImageKey:nil];
   [[self imageView] setImage:nil];
-  [[self deletePictureButton] setHidden:TRUE];
+  //[[self deletePictureButton] setHidden:TRUE];
 }
 
 - (IBAction)backgroundTapped:(id)sender {
   [[self view] endEditing:YES];
+  [[self nameField] exerciseAmbiguityInLayout];
 }
 
 - (void)viewWasSingleFingerTapped {
@@ -66,13 +69,64 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // The other way to achieve this is to have the view be a type of class UIControl
-  // That way, it can send the message "backgroundTapped" to its delegate
-  //
-  //UIGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-  //                                                                               action:@selector
-  //                                                                               (viewWasSingleFingerTapped)];
-  //[[self view] addGestureRecognizer:singleFingerTap];
+
+  UIImageView *iv = [[UIImageView alloc] initWithImage:nil];
+
+  // The contentMode of the image view in the XIB was Aspect Fit:
+  [iv setContentMode:UIViewContentModeScaleAspectFit];
+
+  [iv setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+  // The image view was a subview of the view
+  [[self view] addSubview:iv];
+
+  // The image view was pointed to by the _imageView instance variable
+  [self setImageView:iv];
+
+  NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:[self imageView]
+                                                                   attribute:NSLayoutAttributeTop
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:[self dateLabel]
+                                                                   attribute:NSLayoutAttributeBottom
+                                                                  multiplier:1.0
+                                                                    constant:0.0];
+
+  [[self view] addConstraint:topConstraint];
+
+  NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:[self imageView]
+                                                                    attribute:NSLayoutAttributeLeading
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:[self view]
+                                                                    attribute:NSLayoutAttributeLeading
+                                                                   multiplier:1
+                                                                     constant:0];
+  [[self view] addConstraint:leftConstraint];
+
+  NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:[self imageView]
+                                                                     attribute:NSLayoutAttributeTrailing
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:[self view]
+                                                                     attribute:NSLayoutAttributeTrailing
+                                                                    multiplier:1
+                                                                      constant:0];
+  [[self view] addConstraint:rightConstraint];
+
+  NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:[self imageView]
+                                                                      attribute:NSLayoutAttributeBottom
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:[self toolbarView]
+                                                                      attribute:NSLayoutAttributeTop
+                                                                     multiplier:1.0
+                                                                       constant:0];
+  [[self view] addConstraint:bottomConstraint];
+}
+
+- (void)viewDidLayoutSubviews {
+  for (UIView *v in [[self view] subviews]) {
+    if ([v hasAmbiguousLayout]) {
+      NSLog(@"AMIGUOUS: %@", v);
+    }
+  }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -96,10 +150,11 @@
   if (imageKey) {
     UIImage *imageToDisplay = [[BNRImageStore sharedStore] imageForKey:imageKey];
     [[self imageView] setImage:imageToDisplay];
+//    [[self deletePictureButton] setHidden:YES];
   }
   else {
     [[self imageView] setImage:nil];
-    [[self deletePictureButton] setHidden:YES];
+//    [[self deletePictureButton] setHidden:YES];
   }
 }
 
@@ -135,7 +190,31 @@
 }
 
 - (IBAction)takePicture:(id)sender {
+
+  if ([_imagePickerPopover isPopoverVisible]) {
+    // If the popover is already up, get rid of it
+    [_imagePickerPopover dismissPopoverAnimated:YES];
+    _imagePickerPopover = nil;
+    return;
+  }
+
   UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+
+  // Place image picker on the screen
+  // Check for iPad device before instantiating the popover controller
+  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    // Create a new popover controller that will display the imagePicker
+    _imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+    [_imagePickerPopover setDelegate:self];
+
+    // Display the popover controller; sender is the camera bar button item
+    [_imagePickerPopover presentPopoverFromBarButtonItem:sender
+                                permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                animated:YES];
+  }
+  else {
+    [self presentViewController:imagePicker animated:YES completion:nil];
+  }
 
   // If our devices has a camera, we want to take a picture, otherwise, we just pick from the photo library
   if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -146,9 +225,6 @@
   }
 
   [imagePicker setDelegate:self];
-
-  // place image picker on the screen
-  [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -170,11 +246,22 @@
   [[BNRImageStore sharedStore] setImage:image forKey:key];
 
   // Put that image onto the screen in our image view
-  [[self deletePictureButton] setHidden:NO];
+//  [[self deletePictureButton] setHidden:NO];
   [[self imageView] setImage:image];
 
-  // Take image picker off the screen - you must call this dismiss method
-  [self dismissViewControllerAnimated:YES completion:nil];
+  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    // On phone, image picker is presented modally. Dismiss it
+    [self dismissViewControllerAnimated:YES completion:nil];
+  }
+  else {
+    [_imagePickerPopover dismissPopoverAnimated:YES];
+    _imagePickerPopover = nil;
+  }
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+  NSLog(@"User dismissed popover");
+  _imagePickerPopover = nil;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
