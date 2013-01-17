@@ -238,7 +238,6 @@
 						<string key="NSFrame">{{0, 460}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -249,6 +248,12 @@
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="93254776"/>
 								<int key="IBUISystemItemIdentifier">15</int>
+							</object>
+							<object class="IBUIBarButtonItem" id="586238857">
+								<string key="IBUITitle">Item</string>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIStyle">1</int>
+								<reference key="IBUIToolbar" ref="93254776"/>
 							</object>
 						</array>
 					</object>
@@ -345,6 +350,14 @@
 					<int key="connectionID">421</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">assetTypeButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="586238857"/>
+					</object>
+					<int key="connectionID">424</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">backgroundTapped:</string>
 						<reference key="source" ref="191373211"/>
@@ -384,6 +397,14 @@
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">163</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">showAssetTypePicker:</string>
+						<reference key="source" ref="586238857"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">425</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -928,6 +949,7 @@
 						<reference key="object" ref="93254776"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="202025213"/>
+							<reference ref="586238857"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -985,6 +1007,11 @@
 						<int key="objectID">358</int>
 						<reference key="object" ref="543242708"/>
 						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">422</int>
+						<reference key="object" ref="586238857"/>
+						<reference key="parent" ref="93254776"/>
 					</object>
 				</array>
 			</object>
@@ -1058,6 +1085,7 @@
 				<boolean value="NO" key="4.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="400.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="401.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="422.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="57.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<boolean value="NO" key="57.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="71.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1075,7 +1103,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">421</int>
+			<int key="maxID">425</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1085,6 +1113,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="backgroundTapped:">id</string>
 						<string key="deletePicture:">id</string>
+						<string key="showAssetTypePicker:">id</string>
 						<string key="takePicture:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -1096,23 +1125,31 @@
 							<string key="name">deletePicture:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="showAssetTypePicker:">
+							<string key="name">showAssetTypePicker:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="takePicture:">
 							<string key="name">takePicture:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="assetTypeButton">UIBarButtonItem</string>
 						<string key="cameraButton">UIBarButtonItem</string>
 						<string key="dateLabel">UILabel</string>
 						<string key="deletePictureButton">UIButton</string>
 						<string key="imageView">UIImageView</string>
 						<string key="nameField">UITextField</string>
-						<string key="pictureButton">UIBarButtonItem</string>
 						<string key="serialField">UITextField</string>
 						<string key="toolbarView">UIToolbar</string>
 						<string key="valueField">UITextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="assetTypeButton">
+							<string key="name">assetTypeButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="cameraButton">
 							<string key="name">cameraButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
@@ -1132,10 +1169,6 @@
 						<object class="IBToOneOutletInfo" key="nameField">
 							<string key="name">nameField</string>
 							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pictureButton">
-							<string key="name">pictureButton</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="serialField">
 							<string key="name">serialField</string>

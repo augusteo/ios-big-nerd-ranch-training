@@ -10,9 +10,9 @@
 		4158520C025765049AC56923 /* HomePwnerItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 415856D6A60DCA570017E332 /* HomePwnerItemCell.m */; };
 		415853737489ED12DEF61B6C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41585F6D80190DDEE6F3CC11 /* DetailViewController.m */; };
 		4158554A4CD30B68708AF936 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 415855D28AE7A70B489F6776 /* BNRImageStore.m */; };
+		415858901C9CD3EC5D1E323C /* AssetTypePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 415850FE5B725261B058861D /* AssetTypePicker.m */; };
 		41585A089C8EB584FFC175BF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158582136161385D66F6958 /* Constants.m */; };
 		41585B9F45C9DB27BD54F792 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 415856F814FBA3B109A3C0AB /* DetailViewController.xib */; };
-		41585C21C3D1586569F389DC /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 415854AD59503F7C1B76969B /* BNRItem.m */; };
 		41585C32B261FB9F967064A5 /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 41585FCF8851023AD2ADAB63 /* BNRItemStore.m */; };
 		41585D673CF76412A901C41D /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41585C2442C449CD9820748A /* ItemsViewController.m */; };
 		41585FECDA2C695C0366F23B /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41585AA16B8AC169D7F7DCCE /* HeaderView.xib */; };
@@ -25,6 +25,9 @@
 		A839FD0A16A4CC920048E3BC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A839FD0916A4CC920048E3BC /* Default.png */; };
 		A839FD0C16A4CC920048E3BC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A839FD0B16A4CC920048E3BC /* Default@2x.png */; };
 		A839FD0E16A4CC920048E3BC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A839FD0D16A4CC920048E3BC /* Default-568h@2x.png */; };
+		A843C49A16A792FC00CCE106 /* HomePwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A843C49816A792FC00CCE106 /* HomePwner.xcdatamodeld */; };
+		A843C49E16A794DF00CCE106 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A843C49D16A794DF00CCE106 /* BNRItem.m */; };
+		A843C4A816A7AB6300CCE106 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A843C4A716A7AB6300CCE106 /* CoreData.framework */; };
 		A8C22B3A16A5FF260086901C /* DeleteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C22B3816A5FF260086901C /* DeleteIcon.png */; };
 		A8C22B3B16A5FF260086901C /* DeleteIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C22B3916A5FF260086901C /* DeleteIcon@2x.png */; };
 		A8D9439016A73665005EEC04 /* HomePwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D9438F16A73665005EEC04 /* HomePwnerItemCell.xib */; };
@@ -32,18 +35,18 @@
 
 /* Begin PBXFileReference section */
 		4158500D08983A6F89F91A45 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
+		415850FE5B725261B058861D /* AssetTypePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTypePicker.m; sourceTree = "<group>"; };
 		41585123E3EE1C06ACD895B1 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		415853BA54C68788AD509DAC /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
 		415853BE894CF163873B73F4 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
-		415854AD59503F7C1B76969B /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		415855D28AE7A70B489F6776 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
 		415856D6A60DCA570017E332 /* HomePwnerItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePwnerItemCell.m; sourceTree = "<group>"; };
-		415856DB55574812310903C0 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
 		415856F814FBA3B109A3C0AB /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		415857EC07F9D5D86E41FE26 /* HomePwnerItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePwnerItemCell.h; sourceTree = "<group>"; };
 		4158582136161385D66F6958 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		41585AA16B8AC169D7F7DCCE /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		41585C2442C449CD9820748A /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
+		41585CE0251B553F2DCDBA51 /* AssetTypePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTypePicker.h; sourceTree = "<group>"; };
 		41585F67BB6A8E96699EF368 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		41585F6D80190DDEE6F3CC11 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		41585FCF8851023AD2ADAB63 /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
@@ -60,6 +63,10 @@
 		A839FD0916A4CC920048E3BC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A839FD0B16A4CC920048E3BC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A839FD0D16A4CC920048E3BC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A843C49916A792FC00CCE106 /* HomePwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomePwner.xcdatamodel; sourceTree = "<group>"; };
+		A843C49C16A794DF00CCE106 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
+		A843C49D16A794DF00CCE106 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
+		A843C4A716A7AB6300CCE106 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A8C22B3816A5FF260086901C /* DeleteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeleteIcon.png; sourceTree = "<group>"; };
 		A8C22B3916A5FF260086901C /* DeleteIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DeleteIcon@2x.png"; sourceTree = "<group>"; };
 		A8D9438F16A73665005EEC04 /* HomePwnerItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePwnerItemCell.xib; sourceTree = "<group>"; };
@@ -70,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A843C4A816A7AB6300CCE106 /* CoreData.framework in Frameworks */,
 				A839FCF816A4CC910048E3BC /* UIKit.framework in Frameworks */,
 				A839FCFA16A4CC910048E3BC /* Foundation.framework in Frameworks */,
 				A839FCFC16A4CC910048E3BC /* CoreGraphics.framework in Frameworks */,
@@ -82,9 +90,10 @@
 		A839FCE816A4CC910048E3BC = {
 			isa = PBXGroup;
 			children = (
+				A843C4A716A7AB6300CCE106 /* CoreData.framework */,
 				A8C22B3416A5FEA50086901C /* Assets */,
-				A839FCFD16A4CC910048E3BC /* Homepwner */,
 				A839FCF616A4CC910048E3BC /* Frameworks */,
+				A839FCFD16A4CC910048E3BC /* Homepwner */,
 				A839FCF416A4CC910048E3BC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,10 +124,11 @@
 				A839FCFE16A4CC920048E3BC /* Supporting Files */,
 				41585C2442C449CD9820748A /* ItemsViewController.m */,
 				415853BA54C68788AD509DAC /* ItemsViewController.h */,
-				415854AD59503F7C1B76969B /* BNRItem.m */,
 				A8D9438F16A73665005EEC04 /* HomePwnerItemCell.xib */,
-				415856DB55574812310903C0 /* BNRItem.h */,
 				41585FCF8851023AD2ADAB63 /* BNRItemStore.m */,
+				A843C49816A792FC00CCE106 /* HomePwner.xcdatamodeld */,
+				A843C49C16A794DF00CCE106 /* BNRItem.h */,
+				A843C49D16A794DF00CCE106 /* BNRItem.m */,
 				415853BE894CF163873B73F4 /* BNRItemStore.h */,
 				4158582136161385D66F6958 /* Constants.m */,
 				41585F67BB6A8E96699EF368 /* Constants.h */,
@@ -130,6 +140,8 @@
 				4158500D08983A6F89F91A45 /* BNRImageStore.h */,
 				415856D6A60DCA570017E332 /* HomePwnerItemCell.m */,
 				415857EC07F9D5D86E41FE26 /* HomePwnerItemCell.h */,
+				415850FE5B725261B058861D /* AssetTypePicker.m */,
+				41585CE0251B553F2DCDBA51 /* AssetTypePicker.h */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -231,12 +243,14 @@
 				A839FD0416A4CC920048E3BC /* main.m in Sources */,
 				A839FD0816A4CC920048E3BC /* HomepwnerAppDelegate.m in Sources */,
 				41585D673CF76412A901C41D /* ItemsViewController.m in Sources */,
-				41585C21C3D1586569F389DC /* BNRItem.m in Sources */,
 				41585C32B261FB9F967064A5 /* BNRItemStore.m in Sources */,
 				41585A089C8EB584FFC175BF /* Constants.m in Sources */,
 				415853737489ED12DEF61B6C /* DetailViewController.m in Sources */,
 				4158554A4CD30B68708AF936 /* BNRImageStore.m in Sources */,
 				4158520C025765049AC56923 /* HomePwnerItemCell.m in Sources */,
+				A843C49A16A792FC00CCE106 /* HomePwner.xcdatamodeld in Sources */,
+				A843C49E16A794DF00CCE106 /* BNRItem.m in Sources */,
+				415858901C9CD3EC5D1E323C /* AssetTypePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +366,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A843C49816A792FC00CCE106 /* HomePwner.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A843C49916A792FC00CCE106 /* HomePwner.xcdatamodel */,
+			);
+			currentVersion = A843C49916A792FC00CCE106 /* HomePwner.xcdatamodel */;
+			path = HomePwner.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A839FCEA16A4CC910048E3BC /* Project object */;
 }

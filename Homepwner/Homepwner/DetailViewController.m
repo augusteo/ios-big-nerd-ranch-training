@@ -10,6 +10,7 @@
 #import "BNRItem.h"
 #import "BNRImageStore.h"
 #import "BNRItemStore.h"
+#import "AssetTypePicker.h"
 
 @interface DetailViewController () {
   UIPopoverController *_imagePickerPopover;
@@ -23,6 +24,9 @@
 @property(weak, nonatomic) IBOutlet UIImageView *imageView;
 @property(weak, nonatomic) IBOutlet UIButton *deletePictureButton;
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property(weak, nonatomic) IBOutlet UIBarButtonItem *assetTypeButton;
+
+- (IBAction)showAssetTypePicker:(id)sender;
 
 - (IBAction)backgroundTapped:(id)sender;
 
@@ -95,6 +99,15 @@
   //[[self deletePictureButton] setHidden:TRUE];
 }
 
+- (IBAction)showAssetTypePicker:(id)sender {
+  [[self view] endEditing:YES];
+
+  AssetTypePicker *assetTypePicker = [[AssetTypePicker alloc] init];
+  [assetTypePicker setItem:[self item]];
+
+  [[self navigationController] pushViewController:assetTypePicker animated:YES];
+}
+
 - (IBAction)backgroundTapped:(id)sender {
   [[self view] endEditing:YES];
   [[self nameField] exerciseAmbiguityInLayout];
@@ -157,7 +170,8 @@
   [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
 
   // Use filtered NSDate object to set dateLabel contents
-  [[self dateLabel] setText:[dateFormatter stringFromDate:[item dateCreated]]];
+//  [[self dateLabel] setText:[[dateFormatter stringFromDate:[[item dateCreated];
+  [[self dateLabel] setText:[NSString stringWithFormat:@"%f", [item dateCreated]]];
 
   NSString *imageKey = [[self item] imageKey];
 
@@ -170,6 +184,13 @@
     [[self imageView] setImage:nil];
 //    [[self deletePictureButton] setHidden:YES];
   }
+
+  NSString *typeLabel = [[[self item] assetType] valueForKey:@"label"];
+  if (!typeLabel) {
+    typeLabel = @"None";
+  }
+
+  [[self assetTypeButton] setTitle:[NSString stringWithFormat:@"Type: %@", typeLabel]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
