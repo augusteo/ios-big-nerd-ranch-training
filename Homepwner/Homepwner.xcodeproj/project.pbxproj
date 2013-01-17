@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4158520C025765049AC56923 /* HomePwnerItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 415856D6A60DCA570017E332 /* HomePwnerItemCell.m */; };
 		415853737489ED12DEF61B6C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41585F6D80190DDEE6F3CC11 /* DetailViewController.m */; };
 		4158554A4CD30B68708AF936 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 415855D28AE7A70B489F6776 /* BNRImageStore.m */; };
 		41585A089C8EB584FFC175BF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158582136161385D66F6958 /* Constants.m */; };
@@ -26,6 +27,7 @@
 		A839FD0E16A4CC920048E3BC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A839FD0D16A4CC920048E3BC /* Default-568h@2x.png */; };
 		A8C22B3A16A5FF260086901C /* DeleteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C22B3816A5FF260086901C /* DeleteIcon.png */; };
 		A8C22B3B16A5FF260086901C /* DeleteIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C22B3916A5FF260086901C /* DeleteIcon@2x.png */; };
+		A8D9439016A73665005EEC04 /* HomePwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D9438F16A73665005EEC04 /* HomePwnerItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +37,10 @@
 		415853BE894CF163873B73F4 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		415854AD59503F7C1B76969B /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		415855D28AE7A70B489F6776 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
+		415856D6A60DCA570017E332 /* HomePwnerItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePwnerItemCell.m; sourceTree = "<group>"; };
 		415856DB55574812310903C0 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
 		415856F814FBA3B109A3C0AB /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		415857EC07F9D5D86E41FE26 /* HomePwnerItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePwnerItemCell.h; sourceTree = "<group>"; };
 		4158582136161385D66F6958 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		41585AA16B8AC169D7F7DCCE /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		41585C2442C449CD9820748A /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 		A839FD0D16A4CC920048E3BC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A8C22B3816A5FF260086901C /* DeleteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeleteIcon.png; sourceTree = "<group>"; };
 		A8C22B3916A5FF260086901C /* DeleteIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DeleteIcon@2x.png"; sourceTree = "<group>"; };
+		A8D9438F16A73665005EEC04 /* HomePwnerItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePwnerItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +116,7 @@
 				41585C2442C449CD9820748A /* ItemsViewController.m */,
 				415853BA54C68788AD509DAC /* ItemsViewController.h */,
 				415854AD59503F7C1B76969B /* BNRItem.m */,
+				A8D9438F16A73665005EEC04 /* HomePwnerItemCell.xib */,
 				415856DB55574812310903C0 /* BNRItem.h */,
 				41585FCF8851023AD2ADAB63 /* BNRItemStore.m */,
 				415853BE894CF163873B73F4 /* BNRItemStore.h */,
@@ -122,6 +128,8 @@
 				415856F814FBA3B109A3C0AB /* DetailViewController.xib */,
 				415855D28AE7A70B489F6776 /* BNRImageStore.m */,
 				4158500D08983A6F89F91A45 /* BNRImageStore.h */,
+				415856D6A60DCA570017E332 /* HomePwnerItemCell.m */,
+				415857EC07F9D5D86E41FE26 /* HomePwnerItemCell.h */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 				41585B9F45C9DB27BD54F792 /* DetailViewController.xib in Resources */,
 				A8C22B3A16A5FF260086901C /* DeleteIcon.png in Resources */,
 				A8C22B3B16A5FF260086901C /* DeleteIcon@2x.png in Resources */,
+				A8D9439016A73665005EEC04 /* HomePwnerItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +236,7 @@
 				41585A089C8EB584FFC175BF /* Constants.m in Sources */,
 				415853737489ED12DEF61B6C /* DetailViewController.m in Sources */,
 				4158554A4CD30B68708AF936 /* BNRImageStore.m in Sources */,
+				4158520C025765049AC56923 /* HomePwnerItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

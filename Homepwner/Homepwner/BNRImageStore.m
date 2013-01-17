@@ -68,7 +68,7 @@
       [_dictionary setObject:result forKey:key];
     }
     else {
-      NSLog(@"Error: unable to find %@", [self imageForKey:key]);
+      NSLog(@"Error: unable to find %@", key);
     }
   }
 

@@ -6,6 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <CoreGraphics/CoreGraphics.h>
 #import "BNRItem.h"
 
 @implementation BNRItem
@@ -69,6 +70,62 @@
   return self;
 }
 
+- (UIImage *)thumbnail {
+  // If there is no thumbnail data, then I have no thumbnail to return
+  if (!_thumbnailData) {
+    return nil;
+  }
+
+  // If I have not yet created my thumbnail image from my data, do so now
+  if (!_thumbnail) {
+    // Create the image from the data
+    _thumbnail = [UIImage imageWithData:_thumbnailData];
+  }
+
+  return _thumbnail;
+}
+
+- (void)setThumbnailDataFromImage:(UIImage *)image {
+  CGSize origImageSize = [image size];
+
+  // The rectangle
+  CGRect newRect = CGRectMake(0, 0, 40, 40);
+
+  // Figure out scaling ratio to make sure we maintain the same aspect ratio
+  float ratio = MAX(newRect.size.width / origImageSize.width, newRect.size.height / origImageSize.height);
+
+  // Create a transparent bitmap context with a scaling factor equal to that of the screen
+  UIGraphicsBeginImageContextWithOptions(newRect.size, NO, 0.0);
+
+  // Create a path that is a rounded rectangle
+  UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:newRect cornerRadius:5.0];
+
+  // Make all subsequent drawing clip to this rounded rectangle
+  [path addClip];
+
+  // Center the image in the thumbnail rectangle
+  CGRect projectRect;
+  projectRect.size.width = ratio * origImageSize.width;
+  projectRect.size.height = ratio * origImageSize.height;
+  projectRect.origin.x = (newRect.size.width - projectRect.size.width) / 2.0;
+  projectRect.origin.y = (newRect.size.height - projectRect.size.height) / 2.0;
+
+  // Draw the image on it
+  [image drawInRect:projectRect];
+
+  // Get the image from the context, keep it as our thumbnail
+  UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+  [self setThumbnail:smallImage];
+
+  // Get the PNG representation of the image and set it as our archivable data
+  NSData *data = UIImagePNGRepresentation(smallImage);
+  [self setThumbnailData:data];
+
+  // Cleanup image context resources, we're done
+  UIGraphicsEndImageContext();
+}
+
+
 - (id)init {
   return [self initWithItemName:@"Possession"
                  valueInDollars:0
@@ -98,6 +155,8 @@
   [aCoder encodeObject:[self imageKey] forKey:@"imageKey"];
 
   [aCoder encodeInt:[self valueInDollars] forKey:@"valueInDollars"];
+
+  [aCoder encodeObject:[self thumbnailData] forKey:@"thumbnailData"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -110,6 +169,8 @@
     [self setValueInDollars:[aDecoder decodeIntForKey:@"valueInDollars"]];
 
     dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
+
+    _thumbnailData = [aDecoder decodeObjectForKey:@"thumbnailData"];
   }
 
   return self;

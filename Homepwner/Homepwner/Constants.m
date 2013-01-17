@@ -1,3 +1,3 @@
 #import "Constants.h"
 
-NSString *const kItemsUITableCell = @"BNRITemTableViewCel";
+NSString *const kItemsUITableCell = @"HomePwnerItemCell";

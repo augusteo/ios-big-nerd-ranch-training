@@ -9,6 +9,8 @@
 #import "BNRItemStore.h"
 #import "BNRItem.h"
 #import "DetailViewController.h"
+#import "HomePwnerItemCell.h"
+#import "Constants.h"
 
 @interface ItemsViewController ()
 
@@ -49,21 +51,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-  // Check for a reusable cell first, use that if it exists
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kItemsUITableCell];
-
-  // If there is no reusable cell fo this type, create a new one
-  if (!cell) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kItemsUITableCell];
-  }
-
-
   // Set the text on the cell with the description of the item
   // that is at the nth index of items, where n = row this cell
-  // will appear in on the tableview
-  NSArray *items = [[BNRItemStore sharedStore] allItems];
-  BNRItem *p = [items objectAtIndex:[indexPath row]];
-  [[cell textLabel] setText:[p description]];
+  // will appear in on the table view
+  BNRItem *item = [[[BNRItemStore sharedStore] allItems] objectAtIndex:[indexPath row]];
+
+  // Get the new or recycled cell
+  HomePwnerItemCell *cell = [tableView dequeueReusableCellWithIdentifier:kItemsUITableCell];
+
+  // Configure the cell with the BNRItem
+  [[cell nameLabel] setText:[item itemName]];
+  [[cell serialNumberLabel] setText:[item serialNumber]];
+  [[cell valueLabel] setText:[NSString stringWithFormat:@"$%d", [item valueInDollars]]];
+
+  [[cell thumbnailView] setImage:[item thumbnail]];
 
   return cell;
 
@@ -118,6 +119,17 @@
 
   // Push it onto the top of the navigation controller's stack
   [[self navigationController] pushViewController:detailViewController animated:YES];
+}
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+
+  // Load the nib
+  UINib *nib = [UINib nibWithNibName:kItemsUITableCell bundle:nil];
+
+  // Register this NIB which contains the cell
+  [[self tableView] registerNib:nib forCellReuseIdentifier:kItemsUITableCell];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
