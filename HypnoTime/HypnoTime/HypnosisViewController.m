@@ -1,46 +1,50 @@
 //
-// Created by rblunden on 1/14/13.
+//  HypnosisViewController.m
+//  HypnoTime
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by joeconway on 8/30/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
-
 
 #import "HypnosisViewController.h"
 #import "HypnosisView.h"
 
-@implementation HypnosisViewController {
+@implementation HypnosisViewController
 
+- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)bundle
+{
+    // Call the superclass's designated initializer
+    self = [super initWithNibName:nil
+                           bundle:nil];
+    if (self) {
+        // Get the tab bar item
+        UITabBarItem *tbi = [self tabBarItem];
+        // Give it a label
+        [tbi setTitle:@"Hypnosis"];
+
+        // Create a UIImage from a file
+        // This will use Hypno@2x.png on retina display devices
+        UIImage *i = [UIImage imageNamed:@"Hypno.png"];
+        // Put that image on the tab bar item
+        [tbi setImage:i];
+    }
+    return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-
-  if (self) {
-    // Get the tab bar item
-    UITabBarItem *tbi = [self tabBarItem];
-    [tbi setTitle:@"Hypnosis"];
-
-    // Create a UIImage from a file
-    // This will use Hypno@2x.png on retina displace devices
-    [tbi setImage:[UIImage imageNamed:@"Hypno.png"]];
-  }
-
-  return self;
+- (void)viewDidLoad
+{
+    // Always call the super implementation of viewDidLoad
+    [super viewDidLoad];
+    NSLog(@"HypnosisViewController loaded its view.");
 }
 
-- (void)loadView {
-  // Create a view
-  CGRect frame = [[UIScreen mainScreen] bounds];
-  HypnosisView *v = [[HypnosisView alloc] initWithFrame:frame];
+- (void)loadView
+{
+    // Create a view
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    HypnosisView *v = [[HypnosisView alloc] initWithFrame:frame];
 
-  // Se it as the "view" of this view controller
-  [self setView:v];
+    // Set it as *the* view of this view controller
+    [self setView:v];    
 }
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-
-  NSLog(@"HyponsisViewController loaded its view");
-}
-
 @end

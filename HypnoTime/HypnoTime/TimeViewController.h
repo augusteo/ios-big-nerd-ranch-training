@@ -1,17 +1,16 @@
 //
-// Created by rblunden on 1/14/13.
+//  TimeViewController.h
+//  HypnoTime
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by joeconway on 8/30/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
-
 
 #import <Foundation/Foundation.h>
 
-
 @interface TimeViewController : UIViewController
-
-@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
-
+{
+    IBOutlet UILabel __weak *timeLabel;
+}
 - (IBAction)showCurrentTime:(id)sender;
-
 @end

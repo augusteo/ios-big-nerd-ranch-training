@@ -1,12 +1,16 @@
 //
-// Created by rblunden on 1/14/13.
+//  HypnosisView.h
+//  Hypnosister
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by joeconway on 8/11/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-
 
 #import <Foundation/Foundation.h>
 
-
 @interface HypnosisView : UIView
+{
+    
+}
+@property (nonatomic, strong) UIColor *circleColor;
 @end

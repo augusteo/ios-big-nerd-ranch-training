@@ -1,14 +1,13 @@
 //
-// Created by rblunden on 1/14/13.
+//  HypnosisViewController.h
+//  HypnoTime
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by joeconway on 8/30/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
-
 
 #import <Foundation/Foundation.h>
 
-
 @interface HypnosisViewController : UIViewController
 
-@property (nonatomic, strong) UIView *view;
 @end
