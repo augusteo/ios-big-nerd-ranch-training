@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A843C4B716A8808C00CCE106 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A843C4B616A8808C00CCE106 /* QuartzCore.framework */; };
 		BE3B4F38140D421800BD6933 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3B4F37140D421800BD6933 /* UIKit.framework */; };
 		BE3B4F3A140D421800BD6933 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3B4F39140D421800BD6933 /* Foundation.framework */; };
 		BE3B4F40140D421800BD6933 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE3B4F3E140D421800BD6933 /* InfoPlist.strings */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A843C4B616A8808C00CCE106 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BE3B4F33140D421800BD6933 /* HypnoTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HypnoTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3B4F37140D421800BD6933 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BE3B4F39140D421800BD6933 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A843C4B716A8808C00CCE106 /* QuartzCore.framework in Frameworks */,
 				BE3B4F4D140D42A000BD6933 /* CoreGraphics.framework in Frameworks */,
 				BE3B4F38140D421800BD6933 /* UIKit.framework in Frameworks */,
 				BE3B4F3A140D421800BD6933 /* Foundation.framework in Frameworks */,
@@ -64,6 +67,7 @@
 		BE3B4F28140D421800BD6933 = {
 			isa = PBXGroup;
 			children = (
+				A843C4B616A8808C00CCE106 /* QuartzCore.framework */,
 				BE3B4F59140D557500BD6933 /* Hypno.png */,
 				BE3B4F5A140D557500BD6933 /* Hypno@2x.png */,
 				BE3B4F5B140D557500BD6933 /* Time.png */,
@@ -294,6 +298,7 @@
 				BE3B4F4B140D421800BD6933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
