@@ -10,12 +10,18 @@
 @class RSSChannel;
 @class WebViewController;
 
+// WTF is this?
+typedef enum {
+  ListViewControllerRSSTypeBNR,
+  ListViewControllerRSSTypeApple
+} ListViewControllerRSSType;
 
 @interface ListViewController : UITableViewController <NSURLConnectionDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate> {
   NSURLConnection *connection;
   NSMutableData *xmlData;
 
   RSSChannel *channel;
+  ListViewControllerRSSType rssType;
 }
 
 @property(nonatomic, strong) WebViewController *webViewController;

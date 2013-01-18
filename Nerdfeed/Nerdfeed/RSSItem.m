@@ -31,7 +31,7 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
   currentString = nil;
 
-  if ([elementName isEqual:@"item"]) {
+  if ([elementName isEqual:@"item"] || [elementName isEqual:@"entry"]) {
     [parser setDelegate:_parentParserDelegate];
   }
 }
