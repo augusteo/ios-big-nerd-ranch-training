@@ -9,6 +9,7 @@
 #import "RSSChannel.h"
 #import "RSSItem.h"
 #import "WebViewController.h"
+#import "ChannelViewController.h"
 
 
 @implementation ListViewController {
@@ -18,10 +19,49 @@
 - (id)initWithStyle:(UITableViewStyle)style {
   self = [super initWithStyle:style];
   if (self) {
+    UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"Info"
+                                                            style:UIBarButtonItemStyleBordered target:self
+                                                           action:@selector(showInfo:)];
+    [[self navigationItem] setRightBarButtonItem:bbi];
     [self fetchEntries];
   }
 
   return self;
+}
+
+- (void)showInfo:(id)showInfo {
+  // Create the channel view controller
+  ChannelViewController *channelViewController = [[ChannelViewController alloc] initWithStyle:UITableViewStyleGrouped];
+
+  if ([self splitViewController]) {
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:channelViewController];
+
+    // Grab a pointer to the split view controller and reset its view controllers array
+    [[self splitViewController] setViewControllers:@[[self navigationController], nvc]];
+
+    // Make detail view controller the delegate of the split view controller and reset its view controllers array
+    [[self splitViewController] setDelegate:channelViewController];
+
+    // If a row has been selected, delesect it so that a row is not slected when viewing the info
+    NSIndexPath *selectedRow = [[self tableView] indexPathForSelectedRow];
+    if (selectedRow) {
+      [[self tableView] deselectRowAtIndexPath:selectedRow animated:YES];
+    }
+  }
+  else {
+    [[self navigationController] pushViewController:channelViewController animated:YES];
+  }
+
+  // Give the VC the channel object through the protocol message
+  [channelViewController listViewController:self handleObject:channel];
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+  return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+  return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -42,24 +82,24 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  // Push the web view controller onto the navigation stack - this implicitly creates the web view controller's view
-  // the first time through
-  [[self navigationController] pushViewController:_webViewController animated:YES];
+  if (![self splitViewController]) {
+    [[self navigationController] pushViewController:_webViewController animated:YES];
+  }
+  else {
+    // We have to create a new navigation controller, as the old one was retained by the split view controller as is
+    // now gone
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:_webViewController];
+
+    [[self splitViewController] setViewControllers:@[[self navigationController], nav]];
+
+    // Make the detail view controller the dlegate of the split view controller
+    [[self splitViewController] setDelegate:_webViewController];
+  }
 
   // Grab the selected item
   RSSItem *entry = [channel items][[indexPath row]];
 
-  // Construct a URL with the link string of the item
-  NSURL *url = [NSURL URLWithString:[entry link]];
-
-  // Construct a request object with that URL
-  NSURLRequest *req = [NSURLRequest requestWithURL:url];
-
-  // Load the request into the web view
-  [[_webViewController webView] loadRequest:req];
-
-  // Set the title of the web view controller's navigation item
-  [[_webViewController navigationItem] setTitle:[entry title]];
+  [_webViewController listViewController:self handleObject:entry];
 }
 
 - (void)fetchEntries {
