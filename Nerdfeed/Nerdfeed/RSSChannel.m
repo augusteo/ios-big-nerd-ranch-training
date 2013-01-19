@@ -32,7 +32,7 @@
     currentString = [[NSMutableString alloc] init];
     [self setInfoString:currentString];
   }
-  else if([elementName isEqual:@"item"] || [elementName isEqual:@"entry"]) {
+  else if ([elementName isEqual:@"item"] || [elementName isEqual:@"entry"]) {
     // When we find an item, create an instance of an RSSItem
     RSSItem *entry = [[RSSItem alloc] init];
 
@@ -59,6 +59,23 @@
   // if the element that was eneded was the channel, give up control to who gave us control in the first place
   if ([elementName isEqual:@"channel"]) {
     [parser setDelegate:_parentParserDelegate];
+  }
+}
+
+- (void)readFromJSONDictionary:(NSDictionary *)d {
+  // The top-level object contains a "feed: obhect which is the channel
+  NSDictionary *feed = d[@"feed"];
+
+  // The feed has a title property, make this the title of our channel
+  [self setTitle:feed[@"feed"]];
+
+  // The feed also has an array of entries, for each one, make a new RSSItem.
+  NSArray *entries = feed[@"entry"];
+  for (NSDictionary *entry in entries) {
+    RSSItem *i = [[RSSItem alloc] init];
+
+    // Pass the entry dictionary to the item so it can grab its ivars
+    [i readFromJSONDictionary:entry];
   }
 }
 

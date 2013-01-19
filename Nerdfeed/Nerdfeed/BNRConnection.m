@@ -44,20 +44,34 @@ static NSMutableArray *sharedConnectionList = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+  id rootObject = nil;
+
   // IF there is "root object"
   if ([self xmlRootObject]) {
     // Create a parser with the incoming data and let the root object parse its contents
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:container];
     [parser setDelegate:[self xmlRootObject]];
     [parser parse];
+
+    rootObject = [self xmlRootObject];
+  }
+  else if ([self jsonRootObject]) {
+    // Turn JSON data into basic model objects
+    NSDictionary *d = [NSJSONSerialization JSONObjectWithData:container options:0
+                                                        error:nil];
+
+    // Have the root object construct itself from basic model objects
+    [[self jsonRootObject] readFromJSONDictionary:d];
+
+    rootObject = [self jsonRootObject];
   }
 
   // Then pass the root object to the completion block - remember, this is the block that the controller supplied
   if ([self completionBlock]) {
-    [self completionBlock]([self xmlRootObject], nil);
+    [self completionBlock](rootObject, nil);
   }
 
-  // now, destory the connection
+  // now, destroy the connection
   [sharedConnectionList removeObject:self];
 }
 

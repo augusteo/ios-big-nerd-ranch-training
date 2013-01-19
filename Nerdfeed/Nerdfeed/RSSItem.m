@@ -35,4 +35,18 @@
     [parser setDelegate:_parentParserDelegate];
   }
 }
+
+- (void)readFromJSONDictionary:(NSDictionary *)d {
+  [self setTitle:d[@"title"][@"label"]];
+
+  // Inside each entry is an array of links, each has an attribute object
+  NSArray *links = d[@"link"];
+  if ([links count] > 1) {
+    NSDictionary *sampleDict = links[1][@"attributes"];
+
+    // The href of an attribute object is the URK for the sample audio file
+    [self setLink:sampleDict[@"href"]];
+  }
+}
+
 @end
